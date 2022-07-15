@@ -146,50 +146,50 @@ describe('Practica del Checkpoint M1', function(){
             expect(deepEqualArrays(
                 [0,1,2],
                 [0,1,2]
-            )).to.be.true;
+            )).toBe.true;
         })
         it('Debe comparar el tipo de cada elemento tambien', function(){
             expect(deepEqualArrays(
                 [0,1,2],
                 ['0','1','2']
-            )).to.be.false;
+            )).toBe.false;
         })
         it('Debe comparar todos los elementos de ambos arrays', function(){
             expect(deepEqualArrays(
                 [0,1,2],
                 [0,1,2,4]
-            )).to.be.false;
+            )).toBe.false;
         })
         it("Debe de hacer comparacion en 'profundidad'", function(){
             expect(deepEqualArrays(
                 [0,1,[[0,1,2],1,2]],
                 [0,1,[[0,1,2],1,2]]
-            )).to.be.true;
+            )).toBe.true;
         })
     })
 
     describe("EJERCICIO 4: OrderedLinkedList metodo add", function(){
         let ll = new OrderedLinkedList()
-        xit("debe agregar nodos a la OrderedLinkedList", function(){
+        it("debe agregar nodos a la OrderedLinkedList", function(){
             ll.add(5)
             let ll2 = new OrderedLinkedList()
-            ll2.head = new Node(5)
-            expect(ll).to.be.deep.equal(ll2)
+            ll2.add(5)
+            expect(ll).toStrictEqual(ll2)
         })
-        xit("debe agregar nodos a la OrderedLinkedList, despues de los nodos mayores al argumento", function(){
+        it("debe agregar nodos a la OrderedLinkedList, despues de los nodos mayores al argumento", function(){
             ll.add(1)
             let ll2 = new OrderedLinkedList()
-            ll2.head = new Node(5)
-            ll2.head.next = new Node(1)
-            expect(ll).to.be.deep.equal(ll2)
+            ll2.add(5)
+            ll2.add(1)
+            expect(ll).toStrictEqual(ll2)
         })
-        xit("debe agregar nodos a la OrderedLinkedList, antes de los nodos menores al argumento", function(){
+        it("debe agregar nodos a la OrderedLinkedList, antes de los nodos menores al argumento", function(){
             ll.add(4)
             let ll2 = new OrderedLinkedList()
-            ll2.head = new Node(5)
-            ll2.head.next = new Node(4)
-            ll2.head.next.next = new Node(1)
-            expect(ll).to.be.deep.equal(ll2)
+            ll2.add(5)
+            ll2.add(4)
+            ll2.add(1)
+            expect(ll).toStrictEqual(ll2)
         })
     })
 

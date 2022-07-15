@@ -106,10 +106,18 @@ function direcciones(laberinto, result = '') {
 // deepEqualArrays([0,1,[[0,1,2],1,2]], [0,1,[[0,1,2],1,2]]) => true
 
 function deepEqualArrays(arr1, arr2) {
-
+    let i = 0;
+    let j = 0;
+    
+    while (i < arr1.length) {
+        if (arr1[i] === arr2[i]) {
+            return true;
+            i++
+        } else {
+            return false;
+        }  
+    }
 }
-
-
 
 // ----- LinkedList -----
 
