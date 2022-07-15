@@ -142,25 +142,25 @@ describe('Practica del Checkpoint M1', function(){
     })
 
     describe('EJERCICIO 3: deepEqualArrays', function(){
-        xit('Debe hacer comparaciones superficiales', function(){
+        it('Debe hacer comparaciones superficiales', function(){
             expect(deepEqualArrays(
                 [0,1,2],
                 [0,1,2]
             )).to.be.true;
         })
-        xit('Debe comparar el tipo de cada elemento tambien', function(){
+        it('Debe comparar el tipo de cada elemento tambien', function(){
             expect(deepEqualArrays(
                 [0,1,2],
                 ['0','1','2']
             )).to.be.false;
         })
-        xit('Debe comparar todos los elementos de ambos arrays', function(){
+        it('Debe comparar todos los elementos de ambos arrays', function(){
             expect(deepEqualArrays(
                 [0,1,2],
                 [0,1,2,4]
             )).to.be.false;
         })
-        xit("Debe de hacer comparacion en 'profundidad'", function(){
+        it("Debe de hacer comparacion en 'profundidad'", function(){
             expect(deepEqualArrays(
                 [0,1,[[0,1,2],1,2]],
                 [0,1,[[0,1,2],1,2]]
