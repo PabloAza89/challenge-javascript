@@ -8,13 +8,13 @@
 // Pero todos los métodos ya implementados en las homeowrks no es 
 // necesario que los vuelvan a definir.
 
-const { labeledStatement } = require('@babel/types');
-const {
-    Queue,
-    LinkedList,
-    Node,
-    BinarySearchTree
-} = require('./DS.js');
+// const { labeledStatement } = require('@babel/types');
+// const {
+//     Queue,
+//     LinkedList,
+//     Node,
+//     BinarySearchTree
+// } = require('./DS.js');
 
 // ----- Closures -----
 
@@ -72,20 +72,44 @@ function exponencial(exp) {
 // haciendo los movimientos SUR->ESTE->NORTE
 // Aclaraciones: el segundo parametro que recibe la funcion ('direccion') puede ser pasado vacio (null)
 
-laberinto = 
-
+let laberinto = {
+    N: 'pared',
+    S: {
+        N: 'pared',
+        S: 'pared',
+        E: 'pared',
+        O: {
+            N: 'pared',
+            S: 'destino',
+            E: 'pared',
+            O: 'pared'                     
+        }
+    },
+    E: 'pared',
+    O: 'pared'
+}
 
 function direcciones(laberinto, result = '') {
     
     for (let key in laberinto) {
-        if (Object.keys(key) !== 'pared') {
-            result += Object.keys(key)
-        } 
-        return direcciones(Object.keys(key), result)
+        if (laberinto[key] === 'destino') {
+            return result + key;
+        }
     }
-    return result;
+    //if (typeof laberinto === 'string') result;
+
+    for (let i = 0 ; i < Object.keys(laberinto).length; i++) {
+        if (laberinto[Object.keys(laberinto)[i]] !== 'pared') {
+            result += Object.keys(laberinto)[i]
+            let next = laberinto[Object.keys(laberinto)[i]]
+            return direcciones(next, result)
+        }
+    }
+    
 }
 
+console.log(direcciones(laberinto))
+// SOS
 
 // EJERCICIO 3
 // Crea la funcion 'deepEqualArrays':

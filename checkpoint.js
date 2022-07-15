@@ -73,16 +73,24 @@ function exponencial(exp) {
 // Aclaraciones: el segundo parametro que recibe la funcion ('direccion') puede ser pasado vacio (null)
 
 function direcciones(laberinto, result = '') {
-    
-    for (let key in laberinto) {
-        if (Object.keys(key) !== 'pared') {
-            result += Object.keys(key)
-        } 
-        return direcciones(Object.keys(key), result)
-    }
-    return result;
-}
+    if (laberinto === undefined) return '';    
 
+        for (let key in laberinto) {
+            if (laberinto[key] === 'destino') {
+                return result + key;
+            }
+        }
+    
+        for (let i = 0 ; i < Object.keys(laberinto).length; i++) {
+            if (laberinto[Object.keys(laberinto)[i]] !== 'pared') {
+                result += Object.keys(laberinto)[i]
+                let next = laberinto[Object.keys(laberinto)[i]]
+                return direcciones(next, result)
+            }
+        }
+
+    if (result.length <= 0) return '';
+}
 
 // EJERCICIO 3
 // Crea la funcion 'deepEqualArrays':

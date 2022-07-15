@@ -96,7 +96,6 @@ describe('Practica del Checkpoint M1', function(){
             O: 'pared'
         }
 
-
         let lab3 = {
             N: 'pared',
             S: 'pared',
