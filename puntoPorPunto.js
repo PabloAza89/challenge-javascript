@@ -72,6 +72,9 @@ function exponencial(exp) {
 // haciendo los movimientos SUR->ESTE->NORTE
 // Aclaraciones: el segundo parametro que recibe la funcion ('direccion') puede ser pasado vacio (null)
 
+laberinto = 
+
+
 function direcciones(laberinto, result = '') {
     
     for (let key in laberinto) {
