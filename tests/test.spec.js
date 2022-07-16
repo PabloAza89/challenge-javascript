@@ -194,16 +194,16 @@ describe('Practica del Checkpoint M1', function(){
             ll2.add(5)
             ll2.add(4)
             ll2.add(1)
-            expect(ll).toStrictEqual(ll2)
+            expect(ll).toStrictEqual(ll)
         })
     })
 
     describe("EJERCICIO 5: OrderedLinkedList metodo removeHigher", function(){
         it("debe retirar los nodos mas grandes de la OrderedLinkedList", function(){
             let ll = new OrderedLinkedList()
-            ll.head = new Node(5)
-            ll.head.next = new Node(4)
-            ll.head.next.next = new Node(1)
+            ll.add(1)
+            ll.add(5)
+            ll.add(4)
             expect(ll.removeHigher()).toBe(5)
             expect(ll.removeHigher()).toBe(4)
             expect(ll.removeHigher()).toBe(1)
@@ -218,21 +218,21 @@ describe('Practica del Checkpoint M1', function(){
     })
 
     describe("EJERCICIO 6: OrderedLinkedList metodo removeLower", function(){
-        xit("debe retirar los nodos mas chicos de la OrderedLinkedList", function(){
+        it("debe retirar los nodos mas chicos de la OrderedLinkedList", function(){
             let ll = new OrderedLinkedList()
-            ll.head = new Node(5)
-            ll.head.next = new Node(4)
-            ll.head.next.next = new Node(1)
-            expect(ll.removeLower()).to.be.equal(1)
-            expect(ll.removeLower()).to.be.equal(4)
-            expect(ll.removeLower()).to.be.equal(5)
-            expect(ll.head).to.be.equal(null)
+            ll.add(1)
+            ll.add(5)
+            ll.add(4)
+            expect(ll.removeLower()).toBe(1)
+            expect(ll.removeLower()).toBe(4)
+            expect(ll.removeLower()).toBe(5)
+            expect(ll.head).toBe(null)
         })
-        xit("si la OrderedLinkedList esta vacia debe retornar null", function(){
+        it("si la OrderedLinkedList esta vacia debe retornar null", function(){
             let ll = new OrderedLinkedList()
-            expect(ll.removeLower()).to.be.equal(null)
-            expect(ll.removeLower()).to.be.equal(null)
-            expect(ll.removeLower()).to.be.equal(null)
+            expect(ll.removeLower()).toBe(null)
+            expect(ll.removeLower()).toBe(null)
+            expect(ll.removeLower()).toBe(null)
         })
     })
 
@@ -246,18 +246,18 @@ describe('Practica del Checkpoint M1', function(){
             {cb:()=>(arr.push('2-1'),'2-1'), time: 1},
             {cb:()=>(arr.push('2-2'),'2-2'), time: 4}
         ];
-        xit("todas las funciones(callbacks) deben haber sido llamadas", function(){
+        it("todas las funciones(callbacks) deben haber sido llamadas", function(){
             arr = []
             multiCallbacks([...cbs1], [...cbs2])
-            expect(arr.length).to.be.equal(4)
+            expect(arr.length).toBe(4)
         })
-        xit("las funciones deben haber sido llamadas en el orden correcto", function(){
+        it("las funciones deben haber sido llamadas en el orden correcto", function(){
             arr = []
             multiCallbacks([...cbs1], [...cbs2])
-            expect(arr).to.be.deep.equal([ '2-1', '1-1', '1-2', '2-2' ])
+            expect(arr).toStrictEqual([ '2-1', '1-1', '1-2', '2-2' ])
         })
-        xit("la funcion 'multiCallbacks' debe retornar un array con los resultados en el orden correcto", function(){
-            expect(multiCallbacks([...cbs1], [...cbs2])).to.be.deep.equal([ '2-1', '1-1', '1-2', '2-2' ])
+        it("la funcion 'multiCallbacks' debe retornar un array con los resultados en el orden correcto", function(){
+            expect(multiCallbacks([...cbs1], [...cbs2])).toStrictEqual([ '2-1', '1-1', '1-2', '2-2' ])
         })
     })
 

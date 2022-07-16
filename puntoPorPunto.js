@@ -218,14 +218,14 @@ OrderedLinkedList.prototype.add = function(val){
 }
 
 //                          head --> 5 --> 3 --> null
-let qq2 = new OrderedLinkedList()
-console.log(qq2.print())
-qq2.add(5)
-console.log(qq2.print())
-qq2.add(3)
-console.log(qq2.print())
-qq2.add(1)
-console.log(qq2.print())
+// let qq2 = new OrderedLinkedList()
+// console.log(qq2.print())
+// qq2.add(5)
+// console.log(qq2.print())
+// qq2.add(3)
+// console.log(qq2.print())
+// qq2.add(1)
+// console.log(qq2.print())
 
 
 // EJERCICIO 5
@@ -244,16 +244,46 @@ console.log(qq2.print())
 // < null
 
 OrderedLinkedList.prototype.removeHigher = function(){
-    
+    if (this.head === null) return null;
+    let Removed;
+    // VERIFIES IF IS ONLY ONE EXISTING NODE
+    if (this.head && !this.head.next) {
+        Removed = this.head.value
+        this.head = null
+        return Removed;
+    }
+    // IF ARE TWO OR MORE NODES, REMOVES THE FIRST
+    if (this.head && this.head.next) {
+        Removed = this.head.value
+        this.head = this.head.next
+        return Removed;
+    }
 }
+
+// let qq2 = new OrderedLinkedList()
+// qq2.add(1)
+// qq2.add(5)
+// qq2.add(4)
+
+// console.log(qq2.print())
+// console.log(qq2.removeHigher())
+// console.log(qq2.print())
+// console.log(qq2.removeHigher())
+// console.log(qq2.print())
+// console.log(qq2.removeHigher())
+// console.log(qq2.print())
+// console.log(qq2.print())
+// console.log(qq2.print())
 
 
 // EJERCICIO 6
 // Crea el metodo 'removeLower' que deve devolver el valor mas bajo de la linked list 
 // removiendo su nodo corresponidente:
 // Ejemplo:
+
 // > LL.print()
 // < 'head --> 5 --> 4 --> 1 --> null'
+
 // > LL.removeHigher()
 // < 1
 // > LL.removeHigher()
@@ -262,11 +292,42 @@ OrderedLinkedList.prototype.removeHigher = function(){
 // < 5
 // > LL.removeHigher()
 // < null
+// > LL.removeHigher()
+// < null
 
 OrderedLinkedList.prototype.removeLower = function(){
-    
+    // VERIFY IF HEAD IS NULL
+    if (this.head === null) return null;
+    // VERYFY HEAD AND NEXT
+    if (this.head && !this.head.next) {
+        let Removed = this.head.value;
+        this.head = null;
+        return Removed;
+    }
+    // DETECT THE LAST NODE
+    let current = this.head
+    while (current.next && current.next.next) {
+        current = current.next
+    }
+    Removed = current.next.value
+    current.next = null;
+    return Removed
+        
 }
 
+// let qq2 = new OrderedLinkedList()
+// qq2.add(1)
+// qq2.add(5)
+// qq2.add(4)
+// console.log(qq2.print())
+// console.log(qq2.removeLower())
+// console.log(qq2.print())
+// console.log(qq2.removeLower())
+// console.log(qq2.print())
+// console.log(qq2.removeLower())
+// console.log(qq2.print())
+// console.log(qq2.removeLower())
+// console.log(qq2.print())
 
 
 // ----- QUEUE -----
