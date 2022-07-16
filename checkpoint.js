@@ -133,6 +133,7 @@ function deepEqualArrays(arr1, arr2) {
 function OrderedLinkedList() {
     this.head = null;
 }
+
 // notar que Node esta implementado en el archivo DS
 
 // Y el metodo print que permite visualizar la lista:
@@ -151,21 +152,57 @@ OrderedLinkedList.prototype.print = function(){
 // EJERCICIO 4
 // Crea el metodo 'add' que debe agregar nodos a la OLL de forma que la misma se conserve ordenada:
 // Ejemplo:
+
 // > LL.print()
 // < 'head --> null'
+
 // > LL.add(1)
 // > LL.print()
 // < 'head --> 1 --> null'
-//    2       c
+
+
 // > LL.add(5)
 // > LL.print()
 // < 'head --> 5 --> 1 --> null'
+
 // > LL.add(4)
 // > LL.print()
-// < 'head --> 5 --> 3 --> 1 --> null'
-//               4
+// < 'head --> 5 --> 4 --> 1 --> null'
+               
 OrderedLinkedList.prototype.add = function(val){
-    
+    // VERIFIES IF VAL IS A NUMBER
+    if (typeof val !== 'number') throw new TypeError('Not a number')
+
+    // IF HEAD IS EMPTY, ASSIGN VAL TO HEAD
+    let current = this.head;
+    if (!current) this.head = new Node(val);
+
+    // INSERT NEW NODE IF ONLY EXIST ONE PREVIOUS NODE
+    current = this.head;
+    if (current) {
+        if (val > current.value && !current.next) {
+            let Moved = current;
+            this.head = new Node(val);
+            this.head.next = Moved;
+        } else if (val < current.value && !current.next) {
+            this.head.next = new Node(val);
+        } 
+    }
+
+    // IF ARE ONLY TWO PREVIOUS NODES:
+    // NEW NODE VERIFY CURRENT VALUE && NEXT VALUE
+    current = this.head;
+    if (val > current.value && !current.next.next) {
+        let Moved = current;
+        this.head = new Node(val)
+        this.head.next = Moved;
+    } else if (val < current.value && val > current.next.value && !current.next.next) {
+        let Moved = current.next
+        this.head.next = new Node(val)
+        this.head.next.next = Moved;
+    } else if (val < current.value && val < current.next.value && !current.next.next) {
+        this.head.next.next =  new Node(val);
+    }
 }
 
 

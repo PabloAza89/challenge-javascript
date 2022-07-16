@@ -169,22 +169,27 @@ describe('Practica del Checkpoint M1', function(){
     })
 
     describe("EJERCICIO 4: OrderedLinkedList metodo add", function(){
-        let ll = new OrderedLinkedList()
         it("debe agregar nodos a la OrderedLinkedList", function(){
+            let ll = new OrderedLinkedList()
             ll.add(5)
             let ll2 = new OrderedLinkedList()
             ll2.add(5)
             expect(ll).toStrictEqual(ll2)
         })
         it("debe agregar nodos a la OrderedLinkedList, despues de los nodos mayores al argumento", function(){
+            let ll = new OrderedLinkedList()
             ll.add(1)
+            ll.add(5)
             let ll2 = new OrderedLinkedList()
             ll2.add(5)
             ll2.add(1)
             expect(ll).toStrictEqual(ll2)
         })
         it("debe agregar nodos a la OrderedLinkedList, antes de los nodos menores al argumento", function(){
+            let ll = new OrderedLinkedList()
             ll.add(4)
+            ll.add(5)
+            ll.add(1)
             let ll2 = new OrderedLinkedList()
             ll2.add(5)
             ll2.add(4)
@@ -194,21 +199,21 @@ describe('Practica del Checkpoint M1', function(){
     })
 
     describe("EJERCICIO 5: OrderedLinkedList metodo removeHigher", function(){
-        xit("debe retirar los nodos mas grandes de la OrderedLinkedList", function(){
+        it("debe retirar los nodos mas grandes de la OrderedLinkedList", function(){
             let ll = new OrderedLinkedList()
             ll.head = new Node(5)
             ll.head.next = new Node(4)
             ll.head.next.next = new Node(1)
-            expect(ll.removeHigher()).to.be.equal(5)
-            expect(ll.removeHigher()).to.be.equal(4)
-            expect(ll.removeHigher()).to.be.equal(1)
-            expect(ll.head).to.be.equal(null)
+            expect(ll.removeHigher()).toBe(5)
+            expect(ll.removeHigher()).toBe(4)
+            expect(ll.removeHigher()).toBe(1)
+            expect(ll.head).toBe(null)
         })
-        xit("si la OrderedLinkedList esta vacia debe retornar null", function(){
+        it("si la OrderedLinkedList esta vacia debe retornar null", function(){
             let ll = new OrderedLinkedList()
-            expect(ll.removeHigher()).to.be.equal(null)
-            expect(ll.removeHigher()).to.be.equal(null)
-            expect(ll.removeHigher()).to.be.equal(null)
+            expect(ll.removeHigher()).toBe(null)
+            expect(ll.removeHigher()).toBe(null)
+            expect(ll.removeHigher()).toBe(null)
         })
     })
 
