@@ -305,11 +305,47 @@ OrderedLinkedList.prototype.removeLower = function(){
 // > multiCallbacks(cbs1, cbs2);
 // < ["2-1", "1-1", "1-2", "2-2"];
 
+
+// const cbs1 = [
+//     {cb:()=>(arr.push('1-1'),'1-1'), time: 2}, ***
+//     {cb:()=>(arr.push('1-2'),'1-2'), time: 3} ***
+// ];
+// const cbs2 = [
+//     {cb:()=>(arr.push('2-1'),'2-1'), time: 1}, 
+//     {cb:()=>(arr.push('2-2'),'2-2'), time: 4}
+// ];
+
 function multiCallbacks(cbs1, cbs2){
+    let joined = cbs1.concat(cbs2)
+    let result = []
+
+    // TIMER joined[0].time
+    // VALUE CB cbs1[0].cb()
+    // return joined.sort((a, b) => a.time - b.time)
+    // return cbs1[0].time
+        
+    let i = 1;
+
+    result.push(cbs1[0].cb())
+    while (i < joined.length) {
+        if (joined[i] > joined[i - 1]) {
+            result.push(joined[i].cb())
+            i = 0
+        } 
+        else {
+            i++
+        }
+
+    }
+    
+    return result
+    
+    
+    // return [cbs2[0].cb(), cbs1[0].cb(), cbs1[1].cb(), cbs2[1].cb()]
     
 }
 
-
+//console.log(multiCallbacks(cbs1, cbs2))
 
 // ----- BST -----
 
@@ -324,9 +360,9 @@ function multiCallbacks(cbs1, cbs2){
 // 5   9
 // resultado:[5,8,9,32,64]
 
-BinarySearchTree.prototype.toArray = function() {
+// BinarySearchTree.prototype.toArray = function() {
     
-}
+// }
 
 
 
